@@ -27,6 +27,7 @@ const FilterContainer = (props: any) => {
                     (isOpen || isDesktop) ? "translate-y-0" : "translate-y-full"
                 }`}
             >
+                {isDesktop && <p className="text-xl font-medium my-4 text-center">Filter by date and time</p>}
                 <FilterForm/>
             </div>
         </>

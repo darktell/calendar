@@ -16,7 +16,6 @@ const DateRangePicker: FC<Props> = ({startDateName, endDateName}) => {
     const [{value: selectedEndDate},{error: endError} , {setValue: setSelectedEndDate, setError: setErrorEndDate}] =
         useField(endDateName);
 
-    console.log(startError, endError)
     const handleDayClick = (selectedDay: Date): void => {
         const dayString = selectedDay.toLocaleDateString("en-US");
         setErrorStartDate("")
@@ -92,6 +91,7 @@ const DateRangePicker: FC<Props> = ({startDateName, endDateName}) => {
                 <button
                     id="prevMonth"
                     className="rounded-full px-2 py-2 text-dark hover:bg-gray-300"
+                    type="button"
                     onClick={() =>
                         setCurrentDate((prev) => new Date(prev.getFullYear(), prev.getMonth() - 1, 1))
                     }
@@ -112,6 +112,7 @@ const DateRangePicker: FC<Props> = ({startDateName, endDateName}) => {
                 <button
                     id="nextMonth"
                     className="rounded-full px-2 py-2 text-dark hover:bg-gray-300"
+                    type="button"
                     onClick={() =>
                         setCurrentDate((prev) => new Date(prev.getFullYear(), prev.getMonth() + 1, 1))
                     }
@@ -140,12 +141,12 @@ const DateRangePicker: FC<Props> = ({startDateName, endDateName}) => {
 
             <div className="grid grid-cols-2 gap-4 px-2 py-4">
         <span
-            className={cn("h-[37px] rounded border border-stroke bg-transparent text-sm px-5 font-medium text-body-color flex items-center justify-center",
+            className={cn("h-[37px] rounded border border-stroke bg-transparent text-sm px-5 text-body-color flex items-center justify-center",
                 {"border-red-400": !!startError})}>
           {selectedStartDate || "Select Start Date"}
         </span>
                 <span
-                    className={cn("h-[37px] rounded border border-stroke bg-transparent text-sm px-5 font-medium text-body-color flex items-center justify-center",
+                    className={cn("h-[37px] rounded border border-stroke bg-transparent text-sm px-5 text-body-color flex items-center justify-center",
                         {"border-red-400": !!endError})}>
           {selectedEndDate || "Select End Date"}
         </span>
